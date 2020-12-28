@@ -26,18 +26,22 @@ int main(void)
     }
 
     if (counter != 13 && counter != 15 && counter != 16) {
-        printf("INVALID");
+        printf("INVALID\n");
         return 0;
     }
 
     printf("counter = %i\n", counter);
     long power = (long) pow(10, counter - 2);
-    printf("first two numbers -> %i\n", (int) (num / power));
-    // printf("counter * 10 = %f\n", pow(10, counter - 2));
-    /* long power;
-    if(counter - 2 >= 0) {
-        power = (long) pow(10, counter - 2);
-    } */
-    // printf("num modulo 10 ** counter = %li\n", power != undefined ? num / power : (long) 98754623 );
-    // printf("%li", power >= 0);
+    int firstTwo = num / power;
+    printf("first two numbers -> %i\n", firstTwo);
+
+    if (counter == 15 && (firstTwo == 34 || firstTwo == 37)){
+        printf("AMEX\n");
+    } else if (counter == 16 && (firstTwo == 51 || firstTwo == 52 || firstTwo == 53|| firstTwo == 54 || firstTwo == 55)){
+        printf("MASTERCARD\n");
+    } else if ((counter == 13 || counter == 16 ) && (firstTwo / 10 == 4)){
+        printf("VISA\n");
+    } else {
+        printf("INVALID\n");
+    }
 }

@@ -19,6 +19,6 @@ int get_positive_int(void)
     {
         n = get_int("Positive Integer: ");
     }
-    while (n < 1);
+    while (n < 1); // >= 0 for a function get_negative_int
     return n;
 }

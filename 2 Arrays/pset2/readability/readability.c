@@ -1,24 +1,91 @@
-65 letters / 14 words * 100 = letters per 100 words
-4 sentences / 14 words * 100 = sentences per 100 words
-the result from the formula should be rounded to the NEAREST whole number (int)
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
 
-214 / 56 * 100 = 382.14
-4 / 56 * 100 = 7.14
+int countLetters(string input);
+int countWords(string input);
+int countSentences(string input);
 
-a letter = [A-Za-z]
-any sequence of characters separated by spaces should count as a word
-any occurrence of a period, exclamation point, or question mark indicates the end of a sentence
-
-
-if (grade >= 16)
+int main(void)
 {
-    printf("Grade 16+");
+    string text = get_string("Text: ");
+    // float index = 0.0588 * L - 0.296 * S - 15.8
+    // L is the average number of letters per 100 words in the text, and S is the average number of sentences per 100 words in the text.
+
+    int letters = countLetters(text);
+    int words = countWords(text);
+    int sentences = countSentences(text);
+
+    printf("Letters = %i\n", letters);
+    printf("Words = %i\n", words);
+    printf("Sentences = %i\n", sentences);
+
+    float lettersPer100 = (float) letters / words;
+    float sentencesPer100 = (float) sentences / words;
+
+    double index = 0.0588 * lettersPer100 - 0.296 * sentencesPer100 - 15.8;
+
+    printf("%f\n", index);
+    // round the integer to the nearest number
 }
-else if (grade < 1)
+
+int countLetters(string input)
 {
-    printf("Before Grade 1");
+    int letters = 0;
+
+    for(int i = 0, n = strlen(input); i < n; i++)
+    {
+        char letter = input[i];
+        bool isLetter = (letter >= 'A' && letter <= 'Z') || (letter >= 'a' && letter <= 'z');
+
+        if(isLetter)
+        {
+            letters++;
+        }
+    }
+
+    return letters;
 }
-else
+
+int countWords(string input)
 {
-    printf("Grade %i", grade);
+    int words = 0;
+
+    for(int i = 0, n = strlen(input); i < n; i++)
+    {
+        char letter = input[i];
+        bool isEnd = letter == ' ' || letter == '.' || letter == '!' || letter == '?'; // end of a word or a sentence
+
+        if(isEnd)
+        {
+            if(i + 1 <= n) // otherwise there will be no next character, that's the end of the string altogether
+            {
+                char next = input[i + 1];
+                if(next != ' ') // if the next character is a space, then the current one is [.!?] so I won't count it and count just the space after it
+                {
+                    words++;
+                }
+            }
+        }
+    }
+
+    return words;
+}
+
+int countSentences(string input)
+{
+    int sentences = 0;
+
+    for(int i = 0, n = strlen(input); i < n; i++)
+    {
+        char letter = input[i];
+        bool isEnd = letter == '.' || letter == '!' || letter == '?'; // end of a word or a sentence
+
+        if(isEnd)
+        {
+            sentences++;
+        }
+    }
+
+    return sentences;
 }

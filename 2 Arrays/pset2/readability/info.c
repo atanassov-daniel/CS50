@@ -10,17 +10,3 @@ I will fist try to find the length myself and then maybe use strlen()
 a letter = [A-Za-z]
 any sequence of characters separated by spaces should count as a word
 any occurrence of a period, exclamation point, or question mark indicates the end of a sentence
-
-
-if (grade >= 16)
-{
-    printf("Grade 16+");
-}
-else if (grade < 1)
-{
-    printf("Before Grade 1");
-}
-else
-{
-    printf("Grade %i", grade);
-}

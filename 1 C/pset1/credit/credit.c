@@ -50,12 +50,8 @@ int main(void)
     }
 
     int exponent = counter - 2;
-    long power = pow(10, exponent); // % 10 will get the last number, % 100 will get the last two numbers, with this power I can get the first 2 numbers // counter - 2 so that I can get the first 2 numbers
-
-    /* with this I had 1.00/1.00 in style50 ->
-    long power = pow(10,
-                     exponent); // % 10 will get the last number, % 100 will get the last two numbers, with this power I can get the first 2 numbers // counter - 2 so that I can get the first 2 numbers
-    */
+    // % 10 will get the last number, % 100 will get the last two numbers, with this power I can get the first 2 numbers // counter - 2 so that I can get the first 2 numbers
+    long power = pow(10, exponent);
 
     power = (long) power;
     int firstTwo = num / power; // take the first 2 numbers

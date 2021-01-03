@@ -21,6 +21,23 @@ int main(int argc, string argv[])
         printf("Substitution key must be 26 characters long!\n"); // Usage: ./substitution key
         return 1;
     }
+    for (int i = 0; i < 26; i++)
+    {
+        if (isalpha(key[i]) == false)
+        {
+            printf("Substitution key must only contain alphabetical characters!\n"); // Usage: ./substitution key
+            return 1;
+        }
+        // check if the character is contained only once, else it is invalid
+        for (int j = i - 1; j >= 0; j--)
+        {
+            if (key[j] == key[i])
+            {
+                printf("Each character must come only once in the key!\n");
+                return 1;
+            }
+        }
+    }
 
     string plaintext = get_string("plaintext: ");
 

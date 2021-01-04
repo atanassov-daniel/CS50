@@ -1,8 +1,9 @@
 // sort in ascending order using the Bubble sort algorithm
 
 #include <stdio.h>
+#include "../../print_array/print.h"
 
-void print_array(int length, int array[]); // moves the cursor on a new line at the end
+// void print_array(int length, int array[]); // moves the cursor on a new line at the end
 
 int main(void)
 {
@@ -36,28 +37,18 @@ int main(void)
 
         }
 
-        if(swaps == length - 1)
-        {
-            break;
-        }
-
         printf("on i = %i array = ", i);
         print_array(length, array);
+
+        if(swaps == length - 1)
+        {
+            printf("break on i = %i\n", i);
+            break;
+        }
     }
 
     printf("after the end the array = ");
     print_array(length, array);
-}
-
-void print_array(int length, int array[])  // moves the cursor on a new line at the end
-{
-    printf("[ ");
-    for(int i = 0; i < length; i++)
-    {
-        if (i != length - 1) printf("%i, ", array[i]);
-        else printf("%i", array[i]);
-    }
-    printf(" ]\n");  // moves the cursor on a new line at the end
 }
 
 // взимам всеки елемент на индекса и го сравнявам със следващия и ако е нужно имс меням местата и това го повтарям със всеки един елемент за да може като проверя два елемента после втория да го проверя отново

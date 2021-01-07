@@ -1,0 +1,69 @@
+sort1 uses: Bubble
+
+How do you know?: Bubble
+
+sort2 uses: Merge
+
+How do you know?: Bubble
+
+sort3 uses: Selection
+
+How do you know?: Bubble
+
+merge -> always n log n
+selection -> always n to the second
+bubble sort - n to the second; n
+
+1. бави се доста преди да почне да принти
+time ./sort1 reversed50000.txt
+real    0m12.775s
+user    0m4.587s
+sys     0m0.096s
+
+time ./sort1 random50000.txt
+real    0m15.197s
+user    0m6.310s
+sys     0m0.064s
+
+time ./sort1 sorted50000.txt -> тоя път веднага почна да принти
+real    0m3.149s
+user    0m0.025s
+sys     0m0.079s
+
+Bubble Sort
+
+2.
+time ./sort2 reversed50000.txt
+real    0m2.807s
+user    0m0.034s
+sys     0m0.080s
+
+time ./sort2 random50000.txt
+real    0m4.118s
+user    0m0.026s
+sys     0m0.085s
+
+time ./sort2 sorted50000.txt
+real    0m5.608s
+user    0m0.016s
+sys     0m0.086s
+
+Merge Sort
+
+3.
+time ./sort3 reversed50000.txt
+real    0m9.428s
+user    0m2.452s
+sys     0m0.064s
+
+time ./sort3 random50000.txt
+real    0m7.362s
+user    0m2.411s
+sys     0m0.060s
+
+time ./sort3 sorted50000.txt -> забави се преди да почне да принти, но не колкото на друггото бавно
+real    0m7.619s
+user    0m2.424s
+sys     0m0.076s
+
+Selection Sort

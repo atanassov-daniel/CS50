@@ -1,0 +1,29 @@
+#include <cs50.h>
+#include <stdio.h>
+
+// Function prototypes
+void draw(int height);
+
+int main(void)
+{
+    int height = get_int("Height: ");
+
+    draw(height);
+}
+
+void draw(int height)
+{
+    // If nothing to draw
+    if(height == 0)
+    {
+        return;
+    }
+
+    draw(height - 1);
+
+    for(int i = 0; i < height; i++)
+    {
+        printf("#");
+    }
+    printf("\n");
+}
